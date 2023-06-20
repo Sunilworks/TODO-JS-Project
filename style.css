@@ -98,7 +98,7 @@ body {
   #plus{
      position: absolute;
       left: 50%;
-      top: 50%;
+      top: 57%;
       transform: translate(-50%,-60%);
       color: black;
       font-weight: bolder;
@@ -110,10 +110,10 @@ body {
     top: 50%;
     transform: translate(-50%,-50%); 
     display: flex;
-    height: 150px;
+    padding: 20px;
     width: 300px;
     background: white;
-    border-radius: 5px;
+    border-radius: 6px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -132,15 +132,18 @@ body {
     }
   }
   #popupHead{
-    color: red;
+    font-size: 20px;
+    font-weight: 400;
+    color: orangered;
     margin-bottom:20px;
   }
   #popupInput{
     margin-bottom:20px;
-    width: 200px;
+    width: 250px;
     height: 30px;
-    border-radius: 5px;
-    border:1px solid red;
+    text-align: center;
+    border-radius: 6px;
+    border-style: groove;
     box-shadow: 1px 1px 3px 0 gray;
   }
   .buttons{
@@ -150,10 +153,12 @@ body {
   
   }
   .buttons button{
+    color: blanchedalmond;
     background: orangered;
-    border-radius: 5px;
-    width: 70px;
+    border-radius: 20px;
+    width: 80px;
     height: 30px;
+    border-style: hidden;
   }
   
   
@@ -172,7 +177,8 @@ body {
   }
   
   .cardHead{
-    color: red;
+    font-size: 24px;
+    color: orangered;
     padding: 10px ;
     border-bottom: 2px solid black;
     text-align: center;
@@ -209,11 +215,11 @@ body {
   }
   
   .checkedSubTask{
-    color: red;
+    color: blue;
     text-decoration: line-through;
   }
   #trash{
-    background: rgb(255, 0, 0);
+    background: rgb(0, 250, 255);
     border-radius: 50%;
     height: 30px;
     width: 30px;
@@ -226,7 +232,7 @@ body {
 
   }
   .createSubTask{
-    background: rgb(0, 30, 255);
+    background: rgb(117, 255, 0);
     border-radius: 50%;
     height: 30px;
     width: 30px;
@@ -236,6 +242,7 @@ body {
     color: rgb(255, 255, 255);
     font-size: 30px;
     font-weight: bold;
+    border-style: hidden;
   }
   /* page 2 */
   /* centering the card */
