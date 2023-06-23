@@ -1,12 +1,7 @@
-let icons = document.getElementById("icons")
-let section = document.querySelector("section")
+let icons = document.getElementById("ic")
 let todoText=document.getElementById('todoText')
-let header1=document.getElementsByTagName('header')[0]
-let header2=document.getElementsByTagName('header')[1]
-let page2Header= document.getElementById('page2Header')
-let backs=document.getElementsByClassName('backs')[0]
-let header2Add=document.getElementById('header2Add');
-// when we click on header add item
+
+// Event Listener for add Items
 icons.addEventListener('click', ()=>{
   addItems("Add your items")
 })
@@ -14,63 +9,65 @@ icons.addEventListener('click', ()=>{
 function addItems(heading, parentNode=""){
 
   console.log(heading)
-//   create node
-let popup=document.createElement('div')
-popup.className="popup"
-let popupHead=document.createElement('div')
-popupHead.id="popupHead"
-popupHead.textContent=heading
-let popupInput=document.createElement('input')
-popupInput.id="popupInput"
-popupInput.type="text"
-popupInput.placeholder=heading
+
+//   creating node
+let pop=document.createElement('div')
+pop.className="popup"
+let popHead=document.createElement('div')
+popHead.id="popupHead"
+popHead.textContent=heading
+let popInput=document.createElement('input')
+popInput.id="popupInput"
+popInput.type="text"
+popInput.placeholder=heading
 
 let buttons=document.createElement('div')
 buttons.className="buttons"
 
-let popupAdd=document.createElement('button')
-popupAdd.id="popupAdd"
-popupAdd.textContent="Add"
+let popAdd=document.createElement('button')
+popAdd.id="popupAdd"
+popAdd.textContent="Add"
 
-let popupClose=document.createElement('button')
-popupClose.id="popupClose"
-popupClose.textContent="Close"
+let popClose=document.createElement('button')
+popClose.id="popupClose"
+popClose.textContent="Close"
 
 // connecting nodes 
-document.body.appendChild(popup)
-popup.appendChild(popupHead)
-popup.appendChild(popupInput)
-popup.appendChild(buttons)
-buttons.appendChild(popupAdd)
-buttons.appendChild(popupClose)
+document.body.appendChild(pop)
+pop.appendChild(popHead)
+pop.appendChild(popInput)
+pop.appendChild(buttons)
+buttons.appendChild(popAdd)
+buttons.appendChild(popClose)
 
   if(heading === "Add new subitems"){
-    popupAdd.addEventListener("click",() =>{
-      creatingSubTask(popupInput.value, parentNode)
-      closingPopup()
+    popAdd.addEventListener("click",() =>{
+      creatingSubTask(popInput.value, parentNode)
+      closingPop()
     })
     
   }
+
   else if(heading === "Add your items"){
-    popupAdd.addEventListener("click", ()=>{
-      createNewTask(popupInput.value)
+    popAdd.addEventListener("click", ()=>{
+      createNewTask(popInput.value)
       // to not show the text after the card creation
       todoText.style.display="none"; 
-      closingPopup()
-      page1();
+      closingPop()
+      pg1();
     })
   }
+
   //  closing the popup
-  popupClose.addEventListener("click", ()=>{
-    closingPopup()
+  popClose.addEventListener("click", ()=>{
+    closingPop()
   })
 
 //   closing pop up function
-  function closingPopup(){
-    popup.remove()
-    popupInput.value = ""
+  function closingPop(){
+    pop.remove()
+    popInput.value = ""
     
-    //  remove bg blur
 
 for(let i=0;i<document.body.children.length;i++){
     document.body.children[i].style.filter="blur(0)"
@@ -84,22 +81,11 @@ for(let i=0;i<document.body.children.length;i++){
     document.body.children[i].style.filter="blur(5px)"
 
 }
-popup.style.filter="blur(0)"
-
+pop.style.filter="blur(0)"
 
 }
 
-//     <div class="todoCard">
-//       <div class="cardHead">Heading</div>
-//       <div class="subTaskRow">
-//         <span class="subTask">Sub Task</span>
-//         <span class="markDone">Mark Done</span> 
-//       </div>
-//       </div>
-//     <div class="subTaskButtons">
-//       <button class="trash">Trash</button>
-//       <button class="createSubTask">+</button>
-//     </div>
+let section = document.querySelector("section")
 
 function createNewTask(cardHeading){
   // creating nodes
@@ -115,8 +101,10 @@ function createNewTask(cardHeading){
   subTaskButtons.className = "subTaskButtons"
 
   let trash = document.createElement("span")
-  trash.textContent = "Delete"
-   trash.className="material-symbols-outlined";//trash-icon
+  //trash-icon(google Font)
+  trash.textContent = "remove_selection"
+   trash.className="material-symbols-outlined"; 
+  //  
    trash.id="trash";
   let createSubTask = document.createElement("button")
   createSubTask.className = "createSubTask"
@@ -146,9 +134,10 @@ function createNewTask(cardHeading){
   })
 
   
-// trigger page 2 
+// Initializing page 2 
+
 cardHead.addEventListener('click',()=>{
-    page2(todoCard);
+    pg2(todoCard);
 })
 }
 
@@ -181,28 +170,38 @@ function creatingSubTask(subTaskDesc, parentNode){
   })
 }
 
-// ------------------page 2 ---------------
-// back btn in page 2
-backs.addEventListener('click',()=>{
-    page1();
+// Page 2 Implementation -------------------->
+// back btn --------------->
+
+let back=document.getElementsByClassName('bk')[0]
+let headtoAdd=document.getElementById('headtoAdd');
+
+back.addEventListener('click',()=>{
+    pg1();
 })
-// add btn in page 2
-header2Add.addEventListener('click',()=>{
+
+// add button in page 2------------->
+
+headtoAdd.addEventListener('click',()=>{
     addItems("Add your items");
  
 })
 
+let head1=document.getElementsByTagName('header')[0]
+let head2=document.getElementsByTagName('header')[1]
+let pg2Head= document.getElementById('pg2Head')
 
-function page2(parentNode){
-header1.style.display="none"
-header2.style.display="flex"
+function pg2(parentNode){
+head1.style.display="none"
+head2.style.display="flex"
 parentNode.classList.add("centerCard")
 section.style.visibility="hidden"
-page2Header.textContent=parentNode.children[0].textContent;
+pg2Head.textContent=parentNode.children[0].textContent;
 }
-function page1(){
-header1.style.display="flex"
-header2.style.display="none"
+
+function pg1(){
+head1.style.display="flex"
+head2.style.display="none"
 section.style.visibility="visible"
 removeClass();
 }
